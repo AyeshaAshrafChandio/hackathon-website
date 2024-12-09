@@ -1,23 +1,26 @@
-import Navbar from "./components/navbar";
-import Header from "./components/header";
-import Menu from "./components/menu";
-import ProductCard7 from "./components/productCard7";
-import CustomCarousel from "./components/customcarousel";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import Hero from "./components/hero";
+import Brand from "./components/brand";
+import Ceramics from "./components/ceramics";
+import Product from "./components/product";
+import Benefit from "./components/benefit";
+import Touch from "../app/components/Touch";
+import ProductListing from "./productlisting/page";
 
 
-export default function home() {
-    
-  return  (
-<div>
+export default function Home() {
+  return (
+   <>
+   <Hero />
+   <Brand />
+   <Ceramics />
+   <Product />
+   <Benefit />
+   <Touch />
+<ProductListing/>
+   
 
-
-
-<Header />
-<Menu />
-<ProductCard7 />
-<CustomCarousel/>
-</div>
-
-
-  )
+   </>
+  );
 }

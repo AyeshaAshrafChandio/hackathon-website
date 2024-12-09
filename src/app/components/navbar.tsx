@@ -1,54 +1,87 @@
-import React from 'react';
-import { RiArrowDropDownLine } from "react-icons/ri";
-import { CiSearch, CiHeart } from "react-icons/ci";
-import { VscAccount } from "react-icons/vsc";
+'use client';
 
-import { IoCartOutline } from "react-icons/io5";
+import React, { useState } from 'react';
+import { CiSearch } from 'react-icons/ci';
+import { IoCartOutline, IoMenu, IoClose } from 'react-icons/io5';
+import { IoIosContact } from 'react-icons/io';
+import Link from 'next/link';
 
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-export default function Navbar() {
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <header >
-      {/* Top Bar */}
-      <div className="bg-white text-black py-2 text-sm flex justify-between items-center px-8 w-full">
-        {/* Search Icon */}
-        <CiSearch className="text-black text-xl" />
-
-        {/* Center Text */}
-        <div className="text-center flex-1 text-lg font-semibold">
-          Avion
+    <div className="p-4 w-full">
+      {/* Top Section */}
+      <div className="flex justify-between items-center py-2">
+        {/* Search Icon for Desktop */}
+        <div className="hidden md:block">
+          <CiSearch size={25} className="text-[#2A254B]" />
         </div>
 
-        {/* Cart and Account Icons */}
-        <div className="flex items-center gap-4 text-xl">
-          <IoCartOutline className="text-black" />
-          <VscAccount className="text-black" />
+        {/* Logo */}
+        <h1 className="text-[#22202E] text-xl md:text-2xl md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+          Avion
+        </h1>
+
+        {/* Desktop Icons */}
+        <div className="hidden md:flex gap-4">
+          <Link href="/cart">
+            <IoCartOutline size={25} className="text-[#2A254B]" />
+          </Link>
+          <IoIosContact size={25} className="text-[#2A254B]" />
+        </div>
+
+        {/* Mobile Hamburger Menu */}
+        <div className="flex items-center gap-4 md:hidden">
+          <CiSearch size={25} className="text-[#2A254B]" />
+          <button className="text-2xl focus:outline-none z-30" onClick={toggleMenu}>
+            {!menuOpen ? <IoMenu /> : <IoClose />}
+          </button>
         </div>
       </div>
-   
-      <div className="bg-white shadow-sm border-b-2 border-gray-200 mx-auto flex flex-col w-full">
-</div>
-<header className="text-gray-600 body-font">
-  <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-    <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-      
-    </a>
-    <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-      <a className="mr-5 hover:text-gray-100">Plant pots</a>
-      <a className="mr-5 hover:text-gray-100">Ceramics</a>
-      <a className="mr-5 hover:text-gray-100">Tables</a>
-      <a className="mr-5 hover:text-gray-100">Chairs</a>
-      <a className="mr-5 hover:text-gray-100">Crockery</a>
-      <a className="mr-5 hover:text-gray-100">Tableware</a>
-      <a className="mr-5 hover:text-gray-100">Cutlery</a>
 
-    </nav>
-    
-  </div>
-</header>
+      <hr />
 
+      {/* Mobile Menu */}
+      <header
+        className={`fixed top-0 right-0 py-6 h-full w-3/4 bg-white shadow-lg transition-transform duration-300 ease-in-out z-20 ${
+          menuOpen ? 'translate-x-0' : 'translate-x-full'
+        } md:hidden`}
+      >
+        <div className="flex justify-end p-4">
+          <button className="text-2xl focus:outline-none" onClick={toggleMenu}>
+            <IoClose />
+          </button>
+        </div>
+
+        <ul className="flex flex-col gap-4 text-[#726E8D] text-base px-6">
+          {['Plant pots', 'Ceramics', 'Tables', 'Chairs', 'Crockery', 'Tableware', 'Cutlery'].map(
+            (item) => (
+              <li key={item} onClick={toggleMenu}>
+                <Link href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}>{item}</Link>
+              </li>
+            )
+          )}
+        </ul>
+      </header>
+
+      {/* Desktop Menu */}
+      <nav className="hidden md:flex justify-center items-center gap-8 mt-4 text-[#726E8D]">
+        {['Plant pots', 'Ceramics', 'Tables', 'Chairs', 'Crockery', 'Tableware', 'Cutlery'].map(
+          (item) => (
+            <Link key={item} href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}>
+              {item}
+            </Link>
+          )
+        )}
+      </nav>
+    </div>
   
-    </header>
   );
-}
+};
 
+export default Navbar;
