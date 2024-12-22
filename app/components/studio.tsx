@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-const Touch = () => {
+const studio = () => {
   return (
     <>
       <section>
@@ -45,4 +45,4 @@ const Touch = () => {
   )
 }
 
-export default Touch;
+export default studio;

@@ -52,10 +52,10 @@ const Product = () => {
             {/* Product 3 */}
             <div className='w-full md:w-[350px] h-auto group'>
               <Image
-                src={'/images/dandy.png'}
+                src={'/images/chair1.png'}
                 height={900}
                 width={900}
-                alt='dandya'
+                alt='chair'
                 className='w-full h-[80%] object-cover transition-transform duration-300 ease-in-out group-hover:scale-105'
               />
               <div className='mt-4 text-[#2A254B]'>

@@ -5,7 +5,7 @@ import Brand from "./components/brand";
 import Ceramics from "./components/ceramics";
 import Product from "./components/product";
 import Benefit from "./components/benefit";
-import Touch from "../app/components/Touch";
+import Touch from "./components/studio";
 import ProductListing from "./productlisting/page";
 
 

@@ -37,7 +37,7 @@ const ProductListing = () => {
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="w-full md:w-1/2 h-auto">
               <Image
-                src="/images/Image Left.png"
+                src={'/images/dandy.png'}
                 height={800}
                 width={800}
                 alt="chair"
@@ -112,7 +112,7 @@ const ProductListing = () => {
                   className="w-full h-auto object-cover transition-transform duration-300 ease-in-out hover:scale-105"
                 />
                 <div className="mt-4 text-[#2A254B]">
-                  <p className="py-2">{item === 'chair' ? 'The Dandy Chair' : `The ${item}`}</p>
+                  <p className="py-2">{item === 'chair' ? 'The Dendy Chair' : `The ${item}`}</p>
                   <p>${item === 'chair' ? 250 : item === 'vase' ? 155 : 125}</p>
                 </div>
               </div>
