@@ -29,7 +29,7 @@ const Hero = () => {
 
       {/* Right Section */}
       <div className="w-full md:w-[40%] h-[580px] bg-white">
-        <img
+        <Image
           src="/images/dandy.png"
           alt="right"
           className="w-full h-full object-cover object-center"
